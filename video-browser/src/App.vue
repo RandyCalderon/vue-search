@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <!-- Binding the emission for search change -->
+    <!-- Binding the vue emission for search change -->
     <SearchBar @termChange="onTermChange"></SearchBar>
-    <VideoDetail :video="selectedVideo"/>
-    <!-- Shorthand for v-bind: -->
-    <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList>
+    <!-- shorthand for v-bind shown here with :video-->
+    <div class="row">
+      <VideoDetail :video="selectedVideo"/>
+      <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList>
+    </div>
   </div>
 </template>
 
@@ -14,7 +16,7 @@ import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/Videodetail";
 
-const API_KEY = "AIzaSyD9nygHgmyz99ZEAo6B5tTMhloHRIjLIVk";
+const API_KEY = "AIzaSyDRsMpny9Sbd88p5hnvqReB0cXXU9zoNfs";
 
 export default {
   name: "App",
@@ -28,6 +30,7 @@ export default {
   },
   methods: {
     onVideoSelect(video) {
+      console.log(video);
       this.selectedVideo = video;
     },
     onTermChange(searchTerm) {
