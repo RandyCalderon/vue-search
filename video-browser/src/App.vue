@@ -1,10 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <!-- Binding the emission for search change -->
     <SearchBar @termChange="onTermChange"></SearchBar>
     <!-- Shorthand for v-bind: -->
-    <VideoList :videos="videos"></VideoList>
-    {{videos.length}}
+    <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList>
   </div>
 </template>
 
@@ -13,7 +12,7 @@ import axios from "axios";
 import SearchBar from "./components/SearchBar";
 import VideoList from "./components/VideoList";
 
-const API_KEY = "AIzaSyBB2KxL4VrzgQWmjpq1C8qHvGMWI4IP0Pg";
+const API_KEY = "AIzaSyD9nygHgmyz99ZEAo6B5tTMhloHRIjLIVk";
 
 export default {
   name: "App",
@@ -21,10 +20,13 @@ export default {
     SearchBar,
     VideoList
   },
-  data: function() {
+  data() {
     return { videos: [] };
   },
   methods: {
+    onVideoSelect(video) {
+      console.log(video);
+    },
     onTermChange(searchTerm) {
       axios
         .get("https://www.googleapis.com/youtube/v3/search", {
