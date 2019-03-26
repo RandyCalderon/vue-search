@@ -1,0 +1,18 @@
+<template>
+  <ul>
+    <VideoListItem :video="video" v-for="video in videos" :key="video.etag"></VideoListItem>
+    <!-- ^This is passing each video as props to videolistitem -->
+  </ul>
+</template>
+
+<script>
+import VideoListItem from "./VideoListItem";
+export default {
+  name: "VideoList",
+  components: {},
+  props: ["videos"] // <-- How you pass similar to props.videos in react, specify object for typechecking or array versions accessed just with the name no props.videos or this.props.videos
+};
+</script>
+
+<style>
+</style>
